@@ -17,7 +17,11 @@
       %dd= job.queue
     %dt Handler
     %dd
-      %pre= job.handler
+      %div.handler_details
+        %pre= job.handler[0..100] + '...'
+      %a{:href => '#', :class => 'handler_details'} Toggle full message
+      %div.handler_details.full.hide
+        %pre= job.handler
     - if job.last_error
       %dt Last Error
       %dd
